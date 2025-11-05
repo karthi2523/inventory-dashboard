@@ -1,3 +1,4 @@
+
 const { Pool } = require('pg');
 require('dotenv').config();
 
@@ -10,19 +11,32 @@ const getDatabaseConfig = () => {
     password: process.env.DB_PASSWORD,
   };
 
-  // Add SSL for production (Render PostgreSQL requires SSL)
+  
   if (process.env.NODE_ENV === 'production') {
     baseConfig.ssl = {
-      rejectUnauthorized: false
+      rejectUnauthorized: false,
     };
   }
 
   return baseConfig;
 };
 
+
 const pool = new Pool(getDatabaseConfig());
 
-// Create table if not exists
+
+const testConnection = async () => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    console.log('✅ Database connected successfully at:', result.rows[0].now);
+    return true;
+  } catch (error) {
+    console.error('❌ Database connection failed:', error.message);
+    return false;
+  }
+};
+
+
 const createTable = async () => {
   try {
     const query = `
@@ -36,22 +50,10 @@ const createTable = async () => {
       );
     `;
     await pool.query(query);
-    console.log('✅ Products table created/verified');
+    console.log('✅ Products table created or verified');
   } catch (error) {
-    console.error('❌ Error creating table:', error);
+    console.error('❌ Error creating table:', error.message);
     throw error;
-  }
-};
-
-// Test database connection
-const testConnection = async () => {
-  try {
-    const result = await pool.query('SELECT NOW()');
-    console.log('✅ Database connected successfully');
-    return true;
-  } catch (error) {
-    console.error('❌ Database connection failed:', error);
-    return false;
   }
 };
 
