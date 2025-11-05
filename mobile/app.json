@@ -1,0 +1,78 @@
+{
+  "expo": {
+    "name": "Inventory Dashboard",
+    "slug": "inventory-dashboard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.inventory",
+      "buildNumber": "1.0.0"
+    },
+
+    "android": {
+      "package": "com.yourcompany.inventory",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [],
+      "softwareKeyboardLayoutMode": "pan"
+    },
+
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1"
+          },
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24,
+            "kotlinVersion": "2.0.21",
+            "buildToolsVersion": "35.0.0",
+            "extraMavenRepos": ["https://jitpack.io"],
+            "packagingOptions": {
+              "pickFirst": [
+                "META-INF/DEPENDENCIES",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/license.txt",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt",
+                "META-INF/notice.txt",
+                "META-INF/ASL2.0"
+              ]
+            }
+          }
+        }
+      ]
+    ],
+
+    "extra": {
+      "eas": {
+        "projectId": "e47012b4-f525-4b19-a50a-12f08d660101"
+      },
+      "API_BASE_URL": "https://inventory-backend-5rk8.onrender.com/api"
+    },
+
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}

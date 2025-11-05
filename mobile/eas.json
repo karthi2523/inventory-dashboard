@@ -1,0 +1,36 @@
+{
+  "cli": {
+    "version": ">= 3.13.0"
+  },
+  "build": {
+    "production": {
+      "env": {
+        "API_BASE_URL": "https://inventory-backend-5rk8.onrender.com/api"
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildConfiguration": "Release",
+        "scheme": "production"
+      }
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "API_BASE_URL": "https://inventory-backend-5rk8.onrender.com/api"
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildConfiguration": "Debug",
+        "scheme": "development"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
